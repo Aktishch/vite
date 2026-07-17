@@ -1,0 +1,50 @@
+{
+  "name": "library",
+  "author": "Aktishch <aktishch@gmail.com>",
+  "description": "application",
+  "version": "7.2",
+  "type": "module",
+  "keywords": [
+    "html",
+    "css",
+    "ui-kit",
+    "js",
+    "ts",
+    "vite",
+    "tailwind",
+    "tsconfig",
+    "stylelint",
+    "prettier",
+    "eslint"
+  ],
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@stylistic/stylelint-plugin": "^5.2.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vituum/vite-plugin-nunjucks": "^2.0.1",
+    "eslint": "^10.7.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "jiti": "^2.7.0",
+    "nunjucks": "^3.2.4",
+    "prettier": "^3.9.5",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "stylelint": "^17.14.0",
+    "stylelint-config-recess-order": "^7.7.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^3.0.0",
+    "stylelint-order": "^8.1.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.64.0",
+    "vite": "^8.1.1",
+    "vite-plugin-checker": "^0.14.4",
+    "vite-plugin-minify": "^3.0.0",
+    "vituum": "^2.0.2"
+  }
+}

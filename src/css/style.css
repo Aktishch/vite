@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-brand-primary: #1e40af;
+  --color-brand-secondary: #0ea5e9;
+
+  /* Кастомные шрифты */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Montserrat', sans-serif;
+
+  /* Кастомные экраны (брейкпоинты) */
+  --breakpoint-3xl: 1920px;
+}

@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "bradlc.vscode-tailwindcss",
+    "heybourn.headwind",
+    "mrmlnc.vscode-postcss-sorting",
+    "usernamehw.errorlens",
+    "ryuta46.multi-command",
+    "j69.ejs-beautify",
+    "ginfuru.better-nunjucks"
+  ]
+}
