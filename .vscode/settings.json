@@ -2,33 +2,18 @@
   "css.validate": true,
   "stylelint.enable": true,
   "stylelint.validate": ["css", "tailwindcss"],
-  "[html]": {
+  "[html][nunjucks]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.stylelint": "explicit"
-    },
-    "editor.formatOnSave": true
-  },
-  "[tailwindcss]": {
+  "[css][tailwindcss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
       "source.fixAll.stylelint": "explicit"
     },
     "editor.formatOnSave": true
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit",
-      "source.fixAll.eslint": "explicit"
-    },
-    "editor.formatOnSave": true
-  },
-  "[typescript]": {
+  "[javascript][typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
       "source.organizeImports": "explicit",
@@ -39,6 +24,9 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
   },
   "files.exclude": {
     ".vscode": true,
@@ -60,9 +48,5 @@
   "editor.formatOnPaste": false,
   "editor.formatOnType": false,
   "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "file",
-  "files.associations": {
-    "*.css": "tailwindcss",
-    "*.html": "nunjucks"
-  }
+  "editor.formatOnSaveMode": "file"
 }

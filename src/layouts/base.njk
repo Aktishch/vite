@@ -1,0 +1,33 @@
+<!doctype html>
+<html data-domain="localhost" data-source="http://localhost:9000" lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="autor" content="//STDKIT" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+  <title>
+    {{ data.title }}
+  </title>
+  <script type="module" src="/src/application.ts"></script>
+</head>
+
+<body>
+
+  {# Заголовок #}
+
+  <header>header</header>
+
+  {# Контент #}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {# Подвал #}
+
+  <footer>footer</footer>
+
+</body>
+
+</html>

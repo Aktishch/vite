@@ -1,0 +1,16 @@
+{% set data = {
+  title: 'My library',
+  status: true
+} %}
+{% extends 'src/layouts/base.njk' %}
+{% import 'src/components/test.njk' as test %}
+
+{% block content %}
+
+{{ test.render(text='Стандартный текст') }}
+
+<div class="wrapper shadow-2xl dark:bg-zinc-800 text-3xl hover:opacity-90 p-8 rounded-3xl bg-primary text-center font-extrabold md:grid-cols-2 text-white grid gap-6 mb-6">
+  <p>Тест</p>
+</div>
+
+{% endblock %}

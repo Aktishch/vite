@@ -1,0 +1,35 @@
+@utility wrapper {
+  --wrapper-padding: 40px;
+  --wrapper-value: 100vw - 32px;
+  --wrapper-content: var(--wrapper-value);
+
+  padding: var(--wrapper-padding) calc(50% - ((var(--wrapper-content)) / 2));
+
+  @variant sm {
+    --wrapper-padding: 48px;
+    --wrapper-value: calc(var(--breakpoint-sm) - 36px);
+  }
+
+  @variant md {
+    --wrapper-padding: 56px;
+    --wrapper-value: calc(var(--breakpoint-md) - 48px);
+  }
+
+  @variant lg {
+    --wrapper-padding: 64px;
+    --wrapper-value: calc(var(--breakpoint-lg) - 52px);
+  }
+
+  @variant xl {
+    --wrapper-padding: 80px;
+    --wrapper-value: calc(var(--breakpoint-xl) - 136px);
+  }
+}
+
+@utility wrapper-distance {
+  --wrapper-distance: 1.25rem;
+  --wrapper-content: calc(var(--wrapper-value) + (var(--wrapper-distance) * 2));
+
+  margin: var(--wrapper-distance);
+  border-radius: var(--wrapper-distance);
+}

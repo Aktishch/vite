@@ -4,6 +4,8 @@ export default {
   extends: ['stylelint-config-standard', 'stylelint-config-recess-order'],
   plugins: ['stylelint-declaration-block-no-ignored-properties', 'stylelint-order', '@stylistic/stylelint-plugin'],
   rules: {
+    'custom-property-pattern': null,
+    'media-query-no-invalid': null,
     'no-descending-specificity': null,
     'rule-empty-line-before': null,
     'font-family-name-quotes': 'always-unless-keyword',
@@ -30,7 +32,18 @@ export default {
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['tailwind', 'theme', 'utility', 'apply', 'layer', 'config', 'import']
+        ignoreAtRules: [
+          'tailwind',
+          'theme',
+          'utility',
+          'apply',
+          'layer',
+          'config',
+          'import',
+          'source',
+          'variant',
+          'custom-variant'
+        ]
       }
     ],
     '@stylistic/declaration-colon-space-after': null,

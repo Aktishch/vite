@@ -11,6 +11,12 @@ export default {
   plugins: ['prettier-plugin-tailwindcss'],
   overrides: [
     {
+      files: ['**/*.html', '**/*.njk'],
+      options: {
+        parser: 'html'
+      }
+    },
+    {
       files: '**/*.json',
       options: {
         parser: 'json'

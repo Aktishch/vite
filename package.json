@@ -2,21 +2,9 @@
   "name": "library",
   "author": "Aktishch <aktishch@gmail.com>",
   "description": "application",
-  "version": "7.2",
+  "version": "7.3",
   "type": "module",
-  "keywords": [
-    "html",
-    "css",
-    "ui-kit",
-    "js",
-    "ts",
-    "vite",
-    "tailwind",
-    "tsconfig",
-    "stylelint",
-    "prettier",
-    "eslint"
-  ],
+  "keywords": ["html", "css", "ui-kit", "js", "ts", "vite", "tailwind", "tsconfig", "stylelint", "prettier", "eslint"],
   "private": true,
   "scripts": {
     "dev": "vite",
