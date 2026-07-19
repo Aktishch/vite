@@ -1,3 +1,7 @@
-import './css/style.css'
+import './tailwind/style.css'
 
-console.log('fff')
+import test from '@scripts/test'
+
+window.addEventListener('DOMContentLoaded', () => {
+  test()
+})

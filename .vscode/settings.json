@@ -2,7 +2,7 @@
   "css.validate": true,
   "stylelint.enable": true,
   "stylelint.validate": ["css", "tailwindcss"],
-  "[html][nunjucks]": {
+  "[html][njk]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },

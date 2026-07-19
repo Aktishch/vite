@@ -1,0 +1,38 @@
+@theme {
+  --font-alt: 'Gilroy', Arial, sans-serif;
+  --font-base: 'Inter', Helvetica, sans-serif;
+  --hex-primary: #af1a4c;
+  --hex-second: #d7a751;
+  --hex-black: #000;
+  --hex-white: #fff;
+  --hex-gray: #b2b2b2;
+  --hex-grey: #f6f7f9;
+  --hex-dark: #303030;
+  --hex-red: #be1b1b;
+  --hex-green: #27ae60;
+  --color-*: initial;
+  --color-primary: var(--hex-primary);
+  --color-second: var(--hex-second);
+  --color-black: var(--hex-black);
+  --color-white: var(--hex-white);
+  --color-gray: var(--hex-gray);
+  --color-grey: var(--hex-grey);
+  --color-dark: var(--hex-dark);
+  --color-red: var(--hex-red);
+  --color-green: var(--hex-green);
+  --breakpoint-*: initial;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1366px;
+  --breakpoint-xxl: 1920px;
+  --content-auto: '';
+  --text-min: 0.5rem;
+  --text-min--line-height: 0.625rem;
+  --text-xxs: 0.625rem;
+  --text-xxs--line-height: 0.75rem;
+  --text-1\.5xl: 1.375rem;
+  --text-1\.5xl--line-height: 1.75rem;
+  --text-2\.5xl: 1.75rem;
+  --text-2\.5xl--line-height: 2.125rem;
+}

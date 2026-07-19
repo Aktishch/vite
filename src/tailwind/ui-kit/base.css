@@ -1,0 +1,89 @@
+@layer base {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
+  * {
+    @apply scrollbar-thumb-primary scrollbar-thin scrollbar-track-black;
+  }
+
+  html {
+    font-size: 16px !important;
+  }
+
+  body {
+    @apply font-base flex min-h-screen flex-col bg-white text-base leading-normal font-normal text-black;
+  }
+
+  main {
+    @apply grow;
+  }
+
+  ::selection {
+    @apply bg-primary text-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    &:empty {
+      @apply hidden;
+    }
+  }
+
+  ol {
+    @apply list-inside list-decimal;
+  }
+
+  picture {
+    @apply rounded-inherit;
+  }
+
+  img {
+    @apply select-none;
+
+    &[src=''] {
+      @apply hidden!;
+    }
+
+    &[src='/'] {
+      @apply invisible;
+    }
+  }
+
+  address {
+    @apply not-italic;
+  }
+
+  q {
+    quotes: '\201c' '\201E';
+  }
+
+  label {
+    @apply block;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    @apply outline-none;
+
+    &:focus-visible {
+      @apply outline-none;
+    }
+  }
+
+  textarea {
+    @apply resize-none overflow-auto;
+  }
+
+  select {
+    @apply appearance-none;
+  }
+}

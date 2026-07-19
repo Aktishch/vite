@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@import './ui-kit/theme.css';
+@import './ui-kit/utilities.css';
+@import './ui-kit/fonts.css';
+@import './ui-kit/base.css';
+@import './ui-kit/waved.css';
+@import './ui-kit/movement.css';
+@import './ui-kit/wrapper.css';
