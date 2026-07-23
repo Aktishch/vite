@@ -1,6 +1,8 @@
 @layer base {
   :root {
     interpolate-size: allow-keywords;
+
+    @apply scheme-light-dark;
   }
 
   * {
@@ -17,6 +19,10 @@
 
   main {
     @apply grow;
+  }
+
+  footer {
+    @apply mt-auto;
   }
 
   ::selection {

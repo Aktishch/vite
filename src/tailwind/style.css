@@ -7,8 +7,25 @@
 @import './ui-kit/base.css';
 @import './ui-kit/waved.css';
 @import './ui-kit/movement.css';
+@import './ui-kit/preloader.css';
 @import './ui-kit/card.css';
 @import './ui-kit/icon.css';
 @import './ui-kit/wrapper.css';
 @import './ui-kit/btn.css';
+@import './ui-kit/input.css';
 @import './ui-kit/utilities.css';
+
+@keyframes progress-bar {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.progress-bar {
+  animation-name: progress-bar;
+  animation-timeline: scroll();
+}

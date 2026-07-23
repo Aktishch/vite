@@ -1,7 +1,15 @@
 import './tailwind/style.css'
 
-import test from '@scripts/test'
+import currentTab from '@scripts/current-tab'
+import preloader from '@scripts/preloader'
+import theme from '@scripts/theme'
 
-window.addEventListener('DOMContentLoaded', () => {
-  test()
-})
+const initApplication = () => {
+  currentTab()
+  theme()
+  preloader().finally(() => {
+    console.log('Init')
+  })
+}
+
+window.addEventListener('DOMContentLoaded', initApplication)

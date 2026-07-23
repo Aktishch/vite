@@ -1,3 +1,5 @@
+{% import 'src/components/image.njk' as image %}
+
 <!doctype html>
 <html data-domain="localhost" data-source="http://localhost:9000" lang="ru">
 
@@ -12,11 +14,30 @@
   <script type="module" src="/src/application.ts"></script>
 </head>
 
-<body>
+<body class="dark:bg-black dark:text-white">
+
+  {# Прелоадер #}
+
+  <div class="flex items-center justify-center fixed inset-0 z-50 bg-white dark:bg-black transition-[opacity,visibility]" data-preloader>
+    <div class="preloader">
+      <div class="preloader-square"></div>
+      <div class="preloader-square"></div>
+      <div class="preloader-square"></div>
+      <div class="preloader-square"></div>
+    </div>
+  </div>
+
+  {# Прогресс прокрутки страницы #}
+
+  <div class="progress-bar hidden lg:block fixed inset-0 z-30 bg-primary h-1"></div>
 
   {# Заголовок #}
 
-  <header>header</header>
+  <header class="wrapper flex items-center justify-between gap-5 sticky top-0 z-30 bg-black transition-transform duration-300 py-4" data-header>
+    <a class="btn btn-white shrink-0 w-36" data-waved="light" draggable="false" href="/">
+      {{ image.render(src = '/img/pictures/logo', format = 'png', className = 'w-full') }}
+    </a>
+  </header>
 
   {# Контент #}
 

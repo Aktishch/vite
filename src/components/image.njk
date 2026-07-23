@@ -1,0 +1,20 @@
+{% macro render(src, format = none, className = none, data = none) %}
+{% set loading = none %}
+
+{% if format == 'jpg' %}
+{% set loading = 'lazy' %}
+{% elif format == 'png' %}
+{% set loading = 'eager' %}
+{% endif %}
+
+{% set source = none %}
+
+{% if src == '/' %}
+{% set source = '/' %}
+{% elif src != '' %}
+{% set source = src ~ '.' ~ format %}
+{% endif %}
+
+<img {% if className != none %}class="{{ className }}" {% endif %}{% if data != none %}{{ data | safe }}{% endif %} draggable="false" {% if loading != none %}loading="{{ loading }}" {% endif %}{% if source != none %}src="{{ source }}" {% endif %} alt="" />
+
+{% endmacro %}
