@@ -1,4 +1,4 @@
-@layer base {
+@layer components {
   .movement {
     &[data-movement='light'] {
       &::after {
@@ -7,7 +7,7 @@
         @apply opacity-30;
       }
 
-      @media (hover) {
+      @media (hover: hover) {
         &:hover::after {
           @apply size-60;
         }
@@ -21,7 +21,7 @@
 
       @apply relative;
 
-      @media (hover) {
+      @media (hover: hover) {
         &:hover::after {
           @apply size-16;
         }

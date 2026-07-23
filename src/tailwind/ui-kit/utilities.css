@@ -2,22 +2,6 @@
   border-radius: inherit;
 }
 
-@utility card {
-  @apply relative flex h-full flex-col overflow-hidden rounded-2xl bg-white;
-}
-
-@utility card-content {
-  @apply flex grow flex-col;
-}
-
-@utility icon {
-  width: 1em;
-  min-width: 1em;
-  height: 1em;
-
-  @apply block;
-}
-
 @utility media {
   @apply absolute inset-0 size-full max-w-none object-cover;
 }

@@ -1,12 +1,12 @@
 {
   "css.validate": true,
   "stylelint.enable": true,
-  "stylelint.validate": ["css", "tailwindcss"],
+  "stylelint.validate": ["css"],
   "[html][njk]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
-  "[css][tailwindcss]": {
+  "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
       "source.fixAll.stylelint": "explicit"
@@ -25,9 +25,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
-  "files.associations": {
-    "*.css": "tailwindcss"
-  },
+  "css.lint.unknownAtRules": "ignore",
+  "editor.defaultColorDecorators": "always",
   "files.exclude": {
     ".vscode": true,
     ".github": true,

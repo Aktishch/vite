@@ -26,6 +26,11 @@
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1366px;
   --breakpoint-xxl: 1920px;
+  --ui-sm: 32;
+  --ui-md: 40;
+  --ui-lg: 48;
+  --ui-xl: 56;
+  --ui-xxl: 64;
   --content-auto: '';
   --text-min: 0.5rem;
   --text-min--line-height: 0.625rem;

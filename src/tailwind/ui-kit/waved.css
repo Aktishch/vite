@@ -1,11 +1,11 @@
-@layer base {
-  @keyframes waved {
-    to {
-      opacity: 0;
-      scale: 25;
-    }
+@keyframes waved {
+  to {
+    opacity: 0;
+    scale: 25;
   }
+}
 
+@layer components {
   .waved {
     @apply rounded-inherit pointer-events-none absolute inset-0 z-1 overflow-hidden;
 
