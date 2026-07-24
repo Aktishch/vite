@@ -15,6 +15,5 @@
 {% set source = src ~ '.' ~ format %}
 {% endif %}
 
-<img {% if className != none %}class="{{ className }}" {% endif %}{% if data != none %}{{ data | safe }}{% endif %} draggable="false" {% if loading != none %}loading="{{ loading }}" {% endif %}{% if source != none %}src="{{ source }}" {% endif %} alt="" />
-
+<img {{ (('class="' ~ className ~ '"') if className != none else '') | safe }} {{ (data if data != none else '') | safe }} draggable="false" {{ (('loading="' ~ loading ~ '"') if loading != none else '') | safe }} {{ (('src="' ~ source ~ '"') if source != none else '') | safe }} alt="" />
 {% endmacro %}

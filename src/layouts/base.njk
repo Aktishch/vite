@@ -1,4 +1,5 @@
 {% import 'src/components/image.njk' as image %}
+{% import 'src/components/icon.njk' as icon %}
 
 <!doctype html>
 <html data-domain="localhost" data-source="http://localhost:9000" lang="ru">
@@ -37,6 +38,7 @@
     <a class="btn btn-white shrink-0 w-36" data-waved="light" draggable="false" href="/">
       {{ image.render(src = '/img/pictures/logo', format = 'png', className = 'w-full') }}
     </a>
+    {{ icon.render(id = 'loader', className = 'icon text-primary text-4xl') }}
   </header>
 
   {# Контент #}
