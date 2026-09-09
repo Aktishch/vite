@@ -1,4 +1,4 @@
-import { Container, isEn, TimeOut } from '@utils'
+import { Container, isEn } from '@utils'
 
 export default (container: Container = document) => {
   const title = container.querySelector('title')
@@ -6,7 +6,7 @@ export default (container: Container = document) => {
   if (!title) return
 
   const text = title.textContent
-  let timeOut: TimeOut
+  let timeOut: NodeJS.Timeout | undefined
 
   const clearTimer = () => {
     if (timeOut) {

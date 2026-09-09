@@ -2,20 +2,9 @@ import { isEn } from '@utils/is-en'
 
 type Input = HTMLInputElement | null
 
-interface ErrorMessage {
-  default: string
-  tel: string
-  email: string
-  login: string
-  password: string
-  select: string
-  description: string
-  file: string
-}
-
 const INPUT_ERROR_CLASSNAME = 'input-error'
 const ERROR_VISIBLE_CLASSNAMES = ['invisible', 'opacity-0']
-const ERROR_MESSAGE: ErrorMessage = {
+const ERROR_MESSAGE = {
   default: isEn ? 'Fill in this field' : 'Заполните это поле',
   tel: isEn ? 'Enter the correct number' : 'Введите корректный номер',
   email: isEn ? 'Enter the correct address' : 'Введите корректный адрес',
@@ -27,7 +16,7 @@ const ERROR_MESSAGE: ErrorMessage = {
 }
 
 export const getValidate = (form: HTMLFormElement) => {
-  const labels: NodeListOf<HTMLLabelElement | HTMLDivElement> = form.querySelectorAll('*[data-label]')
+  const labels = form.querySelectorAll<HTMLLabelElement | HTMLDivElement>('*[data-label]')
   let isValid = true
   let firstInvalidInput: Input = null
 
@@ -41,7 +30,7 @@ export const getValidate = (form: HTMLFormElement) => {
 
     let invalidInput = false
 
-    const showError = (message: string = ERROR_MESSAGE.default) => {
+    const showError = (message = ERROR_MESSAGE.default) => {
       invalidInput = true
       input.classList.add(INPUT_ERROR_CLASSNAME)
       error.classList.remove(...ERROR_VISIBLE_CLASSNAMES)

@@ -46,6 +46,12 @@ export default {
         ]
       }
     ],
+    'at-rule-prelude-no-invalid': [
+      true,
+      {
+        ignoreAtRules: ['apply']
+      }
+    ],
     '@stylistic/declaration-colon-space-after': null,
     '@stylistic/declaration-colon-space-before': null
   }

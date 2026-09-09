@@ -1,12 +1,12 @@
 import { isEn } from '@utils/is-en'
 
-interface UploadedFile {
+interface FileOptions {
   file: File
   url: string
 }
 
 export const uploadFile = (file: File) => {
-  return new Promise<UploadedFile>((resolve, reject) => {
+  return new Promise<FileOptions>((resolve, reject) => {
     const reader = new FileReader()
 
     const setError = () => {

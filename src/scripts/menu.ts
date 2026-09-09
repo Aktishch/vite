@@ -1,0 +1,58 @@
+import { closeSidebar, openSidebar } from '@scripts/sidebar'
+import { Container, getData, getTouchDevice } from '@utils'
+
+const DATA_MENU = getData('menu')
+
+export default (container: Container = document) => {
+  if (!getTouchDevice()) return
+
+  const menu: HTMLDivElement | null = container.querySelector(`*[${DATA_MENU}]`)
+
+  if (!menu) return
+
+  const threshold = 70
+  let initialY = 0
+  let initialX = 0
+  let currentY = 0
+  let currentX = 0
+  let isActive = false
+
+  const onStart = (event: TouchEvent) => {
+    const touch = event.touches[0]
+
+    initialY = touch.clientY
+    initialX = touch.clientX
+    currentY = touch.clientY
+    currentX = touch.clientX
+    isActive = !!(event.target as HTMLElement).closest(`[${DATA_MENU}]`)
+  }
+
+  const onMove = (event: TouchEvent) => {
+    const touch = event.touches[0]
+
+    currentY = touch.clientY
+    currentX = touch.clientX
+  }
+
+  const onEnd = () => {
+    const deltaY = initialY - currentY
+    const deltaX = initialX - currentX
+
+    if (Math.abs(deltaY) > Math.abs(deltaX)) return
+
+    if (isActive) {
+      if (deltaX > threshold) {
+        closeSidebar(menu)
+      }
+    } else {
+      if (initialX <= 32 && deltaX < -threshold) {
+        openSidebar(menu)
+      }
+    }
+  }
+
+  container.addEventListener('touchstart', onStart as EventListener, { passive: true })
+  container.addEventListener('touchmove', onMove as EventListener, { passive: true })
+  container.addEventListener('touchend', onEnd, { passive: true })
+  container.addEventListener('touchcancel', onEnd, { passive: true })
+}

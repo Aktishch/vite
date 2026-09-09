@@ -1,23 +1,19 @@
 import { isEn } from '@utils/is-en'
-import { FileType } from '@utils/types'
 
-interface FileHandler {
+export type FileType = 'img' | 'doc'
+
+interface HandlerOptions {
   file: File
   error: HTMLSpanElement
   type: FileType
   size: number
 }
 
-interface ErrorMessage {
-  type: string
-  size: string
-}
-
 const ERROR_VISIBLE_CLASSNAMES = ['invisible', 'opacity-0']
 
-export const handleFile = ({ file, error, type, size }: FileHandler) => {
+export const handleFile = ({ file, error, type, size }: HandlerOptions) => {
   const maxSize = size * Math.pow(1024, 2)
-  const errorMessage: ErrorMessage = {
+  const errorMessage = {
     type: '',
     size: isEn ? `The size is not more than ${size} MB` : `Размер не более ${size} мб`
   }

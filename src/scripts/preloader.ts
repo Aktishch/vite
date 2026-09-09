@@ -1,19 +1,18 @@
 import { Container, getData, hideScrollbar, isEn, logError, showScrollbar } from '@utils'
 
 const DATA_PRELOADER = getData('preloader')
+const DURATION = 500
 
-const loadTimePreloader = (preloader: HTMLDivElement) => {
-  return new Promise<HTMLDivElement>((resolve, reject) => {
+const loadTimePreloader = (preloader: HTMLElement | null) => {
+  return new Promise<HTMLElement>((resolve, reject) => {
     if (preloader) {
-      const duration = 500
-
       hideScrollbar()
-      preloader.style.transitionDuration = `${duration}ms`
+      preloader.style.transitionDuration = `${DURATION}ms`
       preloader.classList.add('invisible', 'opacity-0')
 
       setTimeout(() => {
         resolve(preloader)
-      }, duration)
+      }, DURATION)
     } else {
       reject(isEn ? `${DATA_PRELOADER} was not found` : `${DATA_PRELOADER} не был найден`)
     }
@@ -21,7 +20,7 @@ const loadTimePreloader = (preloader: HTMLDivElement) => {
 }
 
 export default async (container: Container = document) => {
-  await loadTimePreloader(container.querySelector(`*[${DATA_PRELOADER}]`) as HTMLDivElement)
+  await loadTimePreloader(container.querySelector(`*[${DATA_PRELOADER}]`))
     .then((preloader) => {
       showScrollbar()
       preloader.remove()

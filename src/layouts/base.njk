@@ -1,5 +1,41 @@
 {% import 'src/components/image.njk' as image %}
 {% import 'src/components/icon.njk' as icon %}
+{% import 'src/components/preloader.njk' as preloader %}
+{% set social = ['ok', 'yt', 'inst', 'tw', 'fb', 'vk'] %}
+{% set nav = {
+  pages: [
+    {
+      href: 'index.html',
+      text: 'Front-page'
+    },
+    {
+      href: 'primary.html',
+      text: 'Primary-page'
+    },
+    {
+      href: 'second.html',
+      text: 'Second-page'
+    },
+    {
+      href: 'icons.html',
+      text: 'Icons-page'
+    }
+  ],
+  blocks: [
+    {
+      href: '#header',
+      text: 'Header'
+    },
+    {
+      href: '#player',
+      text: 'Player'
+    },
+    {
+      href: '#footer',
+      text: 'Footer'
+    }
+  ]
+} %}
 
 <!doctype html>
 <html data-domain="localhost" data-source="http://localhost:9000" lang="ru">
@@ -20,12 +56,7 @@
   {# Прелоадер #}
 
   <div class="flex items-center justify-center fixed inset-0 z-50 bg-white dark:bg-black transition-[opacity,visibility]" data-preloader>
-    <div class="preloader">
-      <div class="preloader-square"></div>
-      <div class="preloader-square"></div>
-      <div class="preloader-square"></div>
-      <div class="preloader-square"></div>
-    </div>
+    {{ preloader.render() }}
   </div>
 
   {# Прогресс прокрутки страницы #}
@@ -38,8 +69,141 @@
     <a class="btn btn-white shrink-0 w-36" data-waved="light" draggable="false" href="/">
       {{ image.render(src = '/img/pictures/logo', format = 'png', className = 'w-full') }}
     </a>
-    {{ icon.render(id = 'loader', className = 'icon text-primary text-4xl') }}
+    <nav class="lg:flex hidden items-center justify-between gap-4 w-full max-w-4xl ml-auto">
+      {% for item in nav.pages %}
+      <a class="btn btn-second font-normal uppercase text-sm underline-offset-4 hover:underline p-1" data-waved="light" draggable="false" href="{{ item.href }}">
+        {{ item.text }}
+      </a>
+      {% endfor %}
+      <div class="group/accordion relative" data-accordion data-close-scroll>
+        <button class="btn btn-second font-normal uppercase text-sm underline-offset-4 hover:underline p-1" data-accordion-toggle data-waved="light">
+          Navigation
+          {{ icon.render(id = 'arrow-right', className = 'icon text-xs transition-transform ml-2 group-data-[accordion=active]/accordion:rotate-90') }}
+        </button>
+        <div class="absolute top-10 right-0 bg-white rounded-lg shadow-md w-full" data-accordion-content>
+          <div class="flex flex-col gap-4 p-4">
+            {% for item in nav.blocks %}
+            <a class="btn btn-gray text-sm underline-offset-4 hover:underline" data-waved="dark" data-scroll-to draggable="false" href="{{ item.href }}">
+              {{ item.text }}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </nav>
+    <button class="btn btn-second lg:hidden" data-sidebar-open="menu" data-waved="light">
+      {{ icon.render(id = 'burger', className = 'icon text-4xl') }}
+    </button>
   </header>
+
+  {# Меню #}
+
+  {% set palette = [
+    {
+      text: 'Первичный',
+      name: 'primary',
+      value: '#af1a4c'
+    },
+    {
+      text: 'Вторичный',
+      name: 'second',
+      value: '#d7a751'
+    },
+    {
+      text: 'Черный',
+      name: 'black',
+      value: '#000000'
+    },
+    {
+      text: 'Белый',
+      name: 'white',
+      value: '#ffffff'
+    },
+    {
+      text: 'Темно-серый',
+      name: 'gray',
+      value: '#b2b2b2'
+    },
+    {
+      text: 'Светло-серый',
+      name: 'grey',
+      value: '#f6f7f9'
+    },
+    {
+      text: 'Темный',
+      name: 'dark',
+      value: '#303030'
+    },
+    {
+      text: 'Красный',
+      name: 'red',
+      value: '#be1b1b'
+    },
+    {
+      text: 'Зеленый',
+      name: 'green',
+      value: '#27ae60'
+    }
+  ] %}
+
+  <div class="group/menu fixed inset-0 z-40 bg-black/50 transition-[opacity,visibility] duration-100 not-data-open:invisible not-data-open:opacity-0" data-menu data-sidebar="menu" data-breakpoint="lg" data-lenis-prevent>
+    <div class="flex flex-col bg-black/70 backdrop-blur-sm overflow-auto transition-[opacity,visibility,transform] duration-300 size-full max-w-93.75 group-not-data-open/menu:invisible group-not-data-open/menu:opacity-0 group-not-data-open/menu:-translate-x-full">
+      <div class="flex items-center justify-between gap-2 bg-black transition-transform duration-500 delay-300 p-4 group-not-data-open/menu:-translate-y-full">
+        <a class="btn btn-white shrink-0 w-36" data-waved="light" draggable="false" href="/">
+          {{ image.render(src = '/img/pictures/logo', format = 'png', className = 'w-full') }}
+        </a>
+        <input class="switch switch-toggle" data-theme-toggle type="checkbox">
+        <button class="btn btn-second p-1" data-sidebar-close="menu" data-waved="light">
+          {{ icon.render(id = 'close', className = 'icon text-white text-2xl') }}
+        </button>
+      </div>
+      <nav class="flex flex-col items-start gap-4 text-white transition-[opacity,visibility,transform] duration-700 delay-500 px-4 pt-4 pb-10 group-not-data-open/menu:invisible group-not-data-open/menu:opacity-0 group-not-data-open/menu:-translate-x-full">
+        {% for item in nav.pages %}
+        <a class="text-xl underline-offset-4 hover:underline" draggable="false" href="{{ item.href }}">
+          {{ item.text }}
+        </a>
+        {% endfor %}
+        <div class="group/accordion" data-accordion data-close-click>
+          <button class="flex items-center text-xl underline-offset-4 hover:underline" data-accordion-toggle>
+            Navigation
+            {{ icon.render(id = 'arrow-right', className = 'icon text-sm opacity-60 transition-transform ml-2 group-data-[accordion=active]/accordion:rotate-90') }}
+          </button>
+          <div data-accordion-content>
+            <div class="flex flex-col items-start gap-2 pl-5 pt-2">
+              {% for item in nav.blocks %}
+              <a class="text-lg underline-offset-4 hover:underline" data-scroll-to data-sidebar-close="menu" draggable="false" href="{{ item.href }}">
+                {{ item.text }}
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="px-4 pt-4 pb-10 mt-auto transition-[opacity,visibility,transform] duration-500 delay-1000 group-not-data-open/menu:invisible group-not-data-open/menu:opacity-0 group-not-data-open/menu:translate-y-1/4">
+        <div class="text-white mb-7" data-palette>
+          <ul class="flex flex-col gap-4 mb-8">
+            {% for item in palette %}
+            <li class="flex items-center justify-between gap-5" data-palette-item>
+              <span>
+                {{ item.text }}
+              </span>
+              <input class="bg-transparent cursor-pointer shrink-0 size-7 ml-auto" data-palette-input="{{ item.name }}" type="color" value="{{ item.value }}">
+              <button class="btn btn-white text-second rounded" data-palette-button="{{ item.value }}" data-waved="dark">Сбросить</button>
+            </li>
+            {% endfor %}
+          </ul>
+          <button class="btn btn-second btn-fill btn-lg w-full" data-palette-reset data-waved="dark">Сбросить всё</button>
+        </div>
+        <div class="flex items-center justify-center gap-4">
+          {% for item in social %}
+          <a class="btn btn-second rounded-full" data-waved="dark" draggable="false" href="">
+            {{ icon.render(id = item, className = 'icon text-3xl') }}
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
 
   {# Контент #}
 

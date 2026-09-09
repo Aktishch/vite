@@ -19,6 +19,8 @@
   .preloader-square {
     animation: preloader 1000ms ease infinite;
 
+    @apply size-7 bg-current opacity-40;
+
     &:nth-child(2) {
       animation-delay: 250ms;
     }
@@ -30,7 +32,5 @@
     &:nth-child(4) {
       animation-delay: 500ms;
     }
-
-    @apply size-7 bg-current opacity-40;
   }
 }

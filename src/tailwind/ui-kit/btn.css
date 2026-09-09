@@ -128,4 +128,6 @@
 
   height: var(--btn-size);
   padding-inline: calc(var(--btn-size) / 2);
+
+  @apply rounded-lg;
 }

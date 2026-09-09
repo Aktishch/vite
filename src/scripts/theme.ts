@@ -5,7 +5,7 @@ const THEME_VALUE = 'dark'
 const THEME_COOKIE = getCookie(THEME_NAME) === THEME_VALUE
 
 export default (container: Container = document) => {
-  const toggles: NodeListOf<HTMLInputElement> = container.querySelectorAll('*[data-theme-toggle]')
+  const toggles = container.querySelectorAll<HTMLInputElement>('*[data-theme-toggle]')
   const length = toggles.length
 
   const checkToggles = (isChecked: boolean) => {
