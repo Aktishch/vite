@@ -26,7 +26,9 @@ export default (container: Container = document) => {
   }
 
   const onKeyUp = (event: KeyboardEvent) => {
-    if (event.altKey && event.code === 'Digit5') {
+    const { altKey, code } = event
+
+    if (altKey && code === 'Digit5') {
       setTheme()
     }
   }

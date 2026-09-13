@@ -1,7 +1,5 @@
 import { Breakpoint, Container, getData, hideScrollbar, html, isEn, logError, media, showScrollbar } from '@utils'
 
-type Toggle = HTMLButtonElement | HTMLAnchorElement | null
-
 const DATA_SIDEBAR = getData('sidebar')
 const DATA_OPEN = getData('open')
 
@@ -51,8 +49,8 @@ export default (container: Container = document) => {
 
   const changeSidebar = (event: Event) => {
     const toggle = event.target as HTMLElement
-    const open: Toggle = toggle.closest(`[${DATA_SIDEBAR}-open]`)
-    const close: Toggle = toggle.closest(`[${DATA_SIDEBAR}-close]`)
+    const open: HTMLElement | null = toggle.closest(`[${DATA_SIDEBAR}-open]`)
+    const close: HTMLElement | null = toggle.closest(`[${DATA_SIDEBAR}-close]`)
 
     if (open) {
       const value = open.dataset.sidebarOpen

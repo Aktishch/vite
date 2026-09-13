@@ -1,7 +1,5 @@
 import { isEn } from '@utils/is-en'
 
-type Input = HTMLInputElement | null
-
 const INPUT_ERROR_CLASSNAME = 'input-error'
 const ERROR_VISIBLE_CLASSNAMES = ['invisible', 'opacity-0']
 const ERROR_MESSAGE = {
@@ -18,12 +16,12 @@ const ERROR_MESSAGE = {
 export const getValidate = (form: HTMLFormElement) => {
   const labels = form.querySelectorAll<HTMLLabelElement | HTMLDivElement>('*[data-label]')
   let isValid = true
-  let firstInvalidInput: Input = null
+  let firstInvalidInput: HTMLInputElement | null = null
 
   if (!labels.length) return isValid
 
   labels.forEach((label) => {
-    const input: Input = label.querySelector('*[data-input]')
+    const input: HTMLInputElement | null = label.querySelector('*[data-input]')
     const error: HTMLSpanElement | null = label.querySelector('*[data-error]')
 
     if (!input || !error) return

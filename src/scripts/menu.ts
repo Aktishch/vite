@@ -2,6 +2,7 @@ import { closeSidebar, openSidebar } from '@scripts/sidebar'
 import { Container, getData, getTouchDevice } from '@utils'
 
 const DATA_MENU = getData('menu')
+const THRESHOLD = 70
 
 export default (container: Container = document) => {
   if (!getTouchDevice()) return
@@ -10,7 +11,6 @@ export default (container: Container = document) => {
 
   if (!menu) return
 
-  const threshold = 70
   let initialY = 0
   let initialX = 0
   let currentY = 0
@@ -18,20 +18,20 @@ export default (container: Container = document) => {
   let isActive = false
 
   const onStart = (event: TouchEvent) => {
-    const touch = event.touches[0]
+    const { clientY, clientX } = event.touches[0]
 
-    initialY = touch.clientY
-    initialX = touch.clientX
-    currentY = touch.clientY
-    currentX = touch.clientX
+    initialY = clientY
+    initialX = clientX
+    currentY = clientY
+    currentX = clientX
     isActive = !!(event.target as HTMLElement).closest(`[${DATA_MENU}]`)
   }
 
   const onMove = (event: TouchEvent) => {
-    const touch = event.touches[0]
+    const { clientY, clientX } = event.touches[0]
 
-    currentY = touch.clientY
-    currentX = touch.clientX
+    currentY = clientY
+    currentX = clientX
   }
 
   const onEnd = () => {
@@ -41,11 +41,11 @@ export default (container: Container = document) => {
     if (Math.abs(deltaY) > Math.abs(deltaX)) return
 
     if (isActive) {
-      if (deltaX > threshold) {
+      if (deltaX > THRESHOLD) {
         closeSidebar(menu)
       }
     } else {
-      if (initialX <= 32 && deltaX < -threshold) {
+      if (initialX <= 32 && deltaX < -THRESHOLD) {
         openSidebar(menu)
       }
     }

@@ -1,4 +1,3 @@
-export * from '@utils/container'
 export * from '@utils/get-data'
 export * from '@utils/get-scroll-position'
 export * from '@utils/get-time-format'

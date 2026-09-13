@@ -30,7 +30,7 @@ export default (container: Container = document) => {
       content.style.transitionDuration = `${transitionDuration}ms`
 
       if (accordion.dataset.accordion === ACTIVE_VALUE) {
-        content.style.height = ''
+        content.style.removeProperty('height')
         content.classList.remove(OVERFLOW_CLASSNAME)
       } else {
         content.classList.add(OVERFLOW_CLASSNAME)

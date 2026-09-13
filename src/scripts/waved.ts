@@ -1,8 +1,8 @@
 import { Container, getTouchDevice } from '@utils'
 
-interface CircleOptions {
-  positionY: number
-  positionX: number
+interface WavedOptions {
+  clientY: number
+  clientX: number
 }
 
 const setWaved = (event: Event) => {
@@ -13,14 +13,16 @@ const setWaved = (event: Event) => {
   const waved = document.createElement('div')
   const circle = document.createElement('div')
 
-  const createWavedCircle = ({ positionY, positionX }: CircleOptions) => {
+  const createWavedCircle = ({ clientY, clientX }: WavedOptions) => {
+    const { top, left } = item.getBoundingClientRect()
+
     const removeWaved = () => {
       waved.remove()
     }
 
     circle.classList.add('waved-circle')
-    circle.style.top = `${positionY - item.getBoundingClientRect().top}px`
-    circle.style.left = `${positionX - item.getBoundingClientRect().left}px`
+    circle.style.top = `${clientY - top}px`
+    circle.style.left = `${clientX - left}px`
     waved.classList.add('waved')
     waved.appendChild(circle)
     item.appendChild(waved)
@@ -31,22 +33,18 @@ const setWaved = (event: Event) => {
     case 'touchstart': {
       if (!getTouchDevice()) return
 
-      createWavedCircle({
-        positionY: (event as TouchEvent).touches[0].clientY,
-        positionX: (event as TouchEvent).touches[0].clientX
-      })
+      const { clientY, clientX } = (event as TouchEvent).touches[0]
 
+      createWavedCircle({ clientY, clientX })
       break
     }
 
     case 'mousedown': {
       if (getTouchDevice()) return
 
-      createWavedCircle({
-        positionY: (event as MouseEvent).clientY,
-        positionX: (event as MouseEvent).clientX
-      })
+      const { clientY, clientX } = event as MouseEvent
 
+      createWavedCircle({ clientY, clientX })
       break
     }
   }

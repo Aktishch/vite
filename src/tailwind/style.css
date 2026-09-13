@@ -1,13 +1,11 @@
 @import 'tailwindcss';
-
-@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
-
 @import './ui-kit/theme.css';
 @import './ui-kit/fonts.css';
 @import './ui-kit/base.css';
 @import './ui-kit/waved.css';
 @import './ui-kit/movement.css';
 @import './ui-kit/preloader.css';
+@import './ui-kit/loader.css';
 @import './ui-kit/card.css';
 @import './ui-kit/icon.css';
 @import './ui-kit/switch.css';
@@ -15,6 +13,41 @@
 @import './ui-kit/btn.css';
 @import './ui-kit/input.css';
 @import './ui-kit/utilities.css';
+
+[data-scroll] {
+  @apply will-change-transform;
+}
+
+.fancybox [hidden]:empty {
+  @apply hidden;
+}
+
+.f-html {
+  @apply max-w-full bg-transparent p-0;
+}
+
+.f-button.is-close-button {
+  @apply top-2 right-2 rounded-full bg-white text-black shadow-md;
+}
+
+.swiper-pagination {
+  @apply static flex items-center justify-center gap-4;
+}
+
+.swiper-bullet {
+  @apply m-0! size-3 rounded-full bg-current transition;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  svg {
+    width: 1em;
+    min-width: 1em;
+    height: 1em;
+
+    @apply block object-none;
+  }
+}
 
 @keyframes progress-bar {
   from {
@@ -29,4 +62,24 @@
 .progress-bar {
   animation-name: progress-bar;
   animation-timeline: scroll();
+}
+
+@keyframes snowflake {
+  0% {
+    opacity: 1;
+    filter: hue-rotate(0deg);
+    translate: -50% 0;
+  }
+
+  100% {
+    opacity: 0;
+    filter: hue-rotate(500deg);
+    translate: -50% 1000%;
+  }
+}
+
+.snowflake {
+  @apply absolute;
+
+  animation: snowflake 3000ms linear both 1;
 }

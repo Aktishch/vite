@@ -31,7 +31,6 @@
   --ui-lg: 48;
   --ui-xl: 56;
   --ui-xxl: 64;
-  --content-auto: '';
   --text-min: 0.5rem;
   --text-min--line-height: 0.625rem;
   --text-xxs: 0.625rem;
@@ -40,4 +39,7 @@
   --text-1\.5xl--line-height: 1.75rem;
   --text-2\.5xl: 1.75rem;
   --text-2\.5xl--line-height: 2.125rem;
+  --content-auto: '';
 }
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));

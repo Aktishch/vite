@@ -1,6 +1,8 @@
 export const getScrollPosition = () => {
+  const { scrollY, scrollX } = window
+
   return {
-    top: window.scrollY ?? 0,
-    left: window.scrollX ?? 0
+    top: scrollY ?? 0,
+    left: scrollX ?? 0
   }
 }

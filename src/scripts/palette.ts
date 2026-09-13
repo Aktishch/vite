@@ -10,9 +10,6 @@ import {
   setCookies
 } from '@utils'
 
-type Input = HTMLInputElement | null
-type Button = HTMLButtonElement | null
-
 const PALETTE_NAME = 'palette'
 const DATA_PALETTE = getData(PALETTE_NAME)
 const COOKIE_VALUE = getCookie(PALETTE_NAME)
@@ -43,14 +40,14 @@ export default (container: Container = document) => {
   if (!palette) return
 
   const items = palette.querySelectorAll<HTMLLIElement>(`*[${DATA_PALETTE}-item]`)
-  const reset: HTMLButtonElement | null = palette.querySelector(`*[${DATA_PALETTE}-reset]`)
+  const reset: HTMLInputElement | null = palette.querySelector(`*[${DATA_PALETTE}-reset]`)
 
   const resetPalette = () => {
     if (Object.keys(PALETTE_COLORS).length) {
       if (items.length) {
         items.forEach((item) => {
-          const input: Input = item.querySelector(`*[${DATA_PALETTE}-input]`)
-          const button: Button = item.querySelector(`*[${DATA_PALETTE}-button]`)
+          const input: HTMLInputElement | null = item.querySelector(`*[${DATA_PALETTE}-input]`)
+          const button: HTMLInputElement | null = item.querySelector(`*[${DATA_PALETTE}-button]`)
 
           if (!input || !button) {
             handleElementsError()
@@ -82,8 +79,8 @@ export default (container: Container = document) => {
 
   if (items.length) {
     items.forEach((item) => {
-      const input: Input = item.querySelector(`*[${DATA_PALETTE}-input]`)
-      const button: Button = item.querySelector(`*[${DATA_PALETTE}-button]`)
+      const input: HTMLInputElement | null = item.querySelector(`*[${DATA_PALETTE}-input]`)
+      const button: HTMLInputElement | null = item.querySelector(`*[${DATA_PALETTE}-button]`)
 
       if (!input || !button) {
         handleElementsError()

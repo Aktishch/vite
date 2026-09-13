@@ -1,0 +1,146 @@
+import { Fancybox } from '@fancyapps/ui/dist/fancybox/'
+// import { initCalendar } from '@ts/air-datepicker'
+// import imagePreview from '@ts/image-preview'
+import lazyLoad from '@scripts/lazy-load'
+// import { setStateSubmitBtn } from '@ts/submit-handler'
+import { getData, getTouchDevice, hostname } from '@utils'
+
+type Callback = ((container: HTMLElement | undefined) => void) | undefined
+
+Fancybox.getDefaults().placeFocusBack = false
+
+if (!getTouchDevice()) {
+  Fancybox.getDefaults().on = {
+    ...Fancybox.getDefaults().on,
+    ready: (fancyboxRef) => {
+      const container = fancyboxRef.getContainer()
+
+      if (container) {
+        container.setAttribute('data-lenis-prevent', '')
+      }
+    }
+  }
+}
+
+const DATA_FANCYBOX = getData('fancybox')
+
+const updateLoad = () => {
+  lazyLoad().update()
+}
+
+export const dialog = {
+  open: (src: string, callback: Callback) => {
+    Fancybox.show(
+      [
+        {
+          src: src,
+          type: 'ajax'
+        }
+      ],
+      {
+        dragToClose: false,
+        on: {
+          'Carousel.contentReady': (...[, , slide]) => {
+            const container = slide.el
+
+            if (container) {
+              updateLoad()
+              callback?.(container)
+            }
+          }
+        }
+      }
+    )
+  },
+  notClosing: (src: string, callback: Callback) => {
+    Fancybox.show(
+      [
+        {
+          src: src,
+          type: 'ajax'
+        }
+      ],
+      {
+        dragToClose: false,
+        closeButton: false,
+        backdropClick: false,
+        on: {
+          'Carousel.contentReady': (...[, , slide]) => {
+            const container = slide.el
+
+            if (container) {
+              updateLoad()
+              callback?.(container)
+            }
+          }
+        }
+      }
+    )
+  },
+  close: () => {
+    Fancybox.close()
+  }
+}
+
+export const getDialogSrc = (name: string) => {
+  return hostname === 'localhost' ? `/dialogs/${name}.html` : `/dialogs/${name}.php`
+}
+
+export default () => {
+  Fancybox.bind(`[${DATA_FANCYBOX}]`)
+
+  Fancybox.bind(`[${DATA_FANCYBOX}-dialog]`, {
+    dragToClose: false,
+    on: {
+      'Carousel.contentReady': (...[, , slide]) => {
+        const container = slide.el
+
+        if (container) {
+          updateLoad()
+        }
+      }
+    }
+  })
+
+  // Fancybox.bind(`[${DATA_FANCYBOX}-form]`, {
+  //   dragToClose: false,
+  //   on: {
+  //     'Carousel.contentReady': (...[, , slide]) => {
+  //       const container = slide.el
+
+  //       if (container) {
+  //         updateLoad()
+  //         setStateSubmitBtn(container)
+  //       }
+  //     }
+  //   }
+  // })
+
+  // Fancybox.bind(`[${DATA_FANCYBOX}-avatar]`, {
+  //   dragToClose: false,
+  //   on: {
+  //     'Carousel.contentReady': (...[, , slide]) => {
+  //       const container = slide.el
+
+  //       if (container) {
+  //         updateLoad()
+  //         imagePreview(container)
+  //       }
+  //     }
+  //   }
+  // })
+
+  // Fancybox.bind(`[${DATA_FANCYBOX}-calendar]`, {
+  //   dragToClose: false,
+  //   on: {
+  //     'Carousel.contentReady': (...[, , slide]) => {
+  //       const container = slide.el
+
+  //       if (container) {
+  //         updateLoad()
+  //         initCalendar(container)
+  //       }
+  //     }
+  //   }
+  // })
+}

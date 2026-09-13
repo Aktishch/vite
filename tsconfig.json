@@ -22,6 +22,7 @@
       "@scripts/*": ["./src/scripts/*"],
       "@utils": ["./src/scripts/utils"],
       "@utils/*": ["./src/scripts/utils/*"],
+      "ymaps": ["./node_modules/@types/yandex-maps"]
     }
   },
   "include": ["src/**/*", "vite.config.ts", "eslint.config.ts", "prettier.config.ts", "stylelint.config.ts"]
