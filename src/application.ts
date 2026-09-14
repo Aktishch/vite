@@ -7,11 +7,15 @@ import currentYear from '@scripts/current-year'
 import draggable from '@scripts/draggable'
 import fancybox from '@scripts/fancybox'
 import lazyLoad from '@scripts/lazy-load'
+import listing from '@scripts/listing'
+import locomotiveScroll from '@scripts/locomotive-scroll'
 import menu from '@scripts/menu'
+import movement from '@scripts/movement'
 import palette from '@scripts/palette'
 import preloader from '@scripts/preloader'
 import runningButton from '@scripts/running-button'
 import scrollHeader from '@scripts/scroll-header'
+import scrollTo from '@scripts/scroll-to'
 import sidebar from '@scripts/sidebar'
 import smartMenu from '@scripts/smart-menu'
 import snowflakes from '@scripts/snowflakes'
@@ -27,10 +31,14 @@ const initApplication = () => {
   draggable()
   fancybox()
   lazyLoad()
+  listing()
+  locomotiveScroll()
   menu()
+  movement()
   palette()
   runningButton()
   scrollHeader()
+  scrollTo()
   sidebar()
   smartMenu()
   snowflakes()

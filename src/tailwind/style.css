@@ -4,6 +4,7 @@
 @import './ui-kit/base.css';
 @import './ui-kit/waved.css';
 @import './ui-kit/movement.css';
+@import './ui-kit/inverted.css';
 @import './ui-kit/preloader.css';
 @import './ui-kit/loader.css';
 @import './ui-kit/card.css';

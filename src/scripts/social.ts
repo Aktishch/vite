@@ -1,7 +1,7 @@
 import { Container, getData, isEn, logError } from '@utils'
 
 const DATA_SOCIAL = getData('social')
-const DATA_OPEN = getData('open')
+const SHOW_VALUE = 'show'
 
 export default (container: Container = document) => {
   const social: HTMLDivElement | null = container.querySelector(`*[${DATA_SOCIAL}]`)
@@ -27,11 +27,7 @@ export default (container: Container = document) => {
     const timeSince = new Date().getTime() - lastTap
 
     if (timeSince < 300 && timeSince > 0) {
-      if (round.hasAttribute(DATA_OPEN)) {
-        round.removeAttribute(DATA_OPEN)
-      } else {
-        round.setAttribute(DATA_OPEN, '')
-      }
+      round.dataset.socialRound = round.dataset.socialRound === SHOW_VALUE ? '' : SHOW_VALUE
     }
 
     lastTap = new Date().getTime()
@@ -42,14 +38,13 @@ export default (container: Container = document) => {
 
     if (!length) return
 
-    const { offsetWidth, offsetHeight } = social
     const radius = Number(social.dataset.social) * 100 || 100
     const step = (2 * Math.PI) / length
     let angle = 0
 
     links.forEach((link) => {
-      link.style.top = `${Math.round(offsetHeight / 2 + radius * Math.sin(angle) - link.offsetHeight / 2)}px`
-      link.style.left = `${Math.round(offsetWidth / 2 + radius * Math.cos(angle) - link.offsetWidth / 2)}px`
+      link.style.top = `${Math.round(social.offsetHeight / 2 + radius * Math.sin(angle) - link.offsetHeight / 2)}px`
+      link.style.left = `${Math.round(social.offsetWidth / 2 + radius * Math.cos(angle) - link.offsetWidth / 2)}px`
       angle += step
     })
   }

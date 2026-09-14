@@ -1,7 +1,6 @@
 import { Container, getData, source } from '@utils'
 
 const DATA_SHOP = getData('shop')
-const DATA_OPEN = getData('open')
 const DATA_PRODUCT = getData('product')
 const SHOW_VALUE = 'show'
 const SHOP_CLASSNAMES = [
@@ -36,11 +35,11 @@ export default (container: Container = document) => {
   let openTimeOut: NodeJS.Timeout | undefined
 
   const showShop = () => {
-    shop.setAttribute(DATA_OPEN, '')
+    shop.dataset.shop = SHOW_VALUE
   }
 
   const hideShop = () => {
-    shop.removeAttribute(DATA_OPEN)
+    shop.dataset.shop = ''
   }
 
   const createShopItem = (event: MouseEvent) => {

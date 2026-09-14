@@ -15,7 +15,7 @@ export default (container: Container = document) => {
     const content: HTMLDivElement | null = accordion.querySelector(`*[${DATA_ACCORDION}-content]`)
     const items = accordion.querySelectorAll<HTMLButtonElement | HTMLAnchorElement>(`*[${DATA_ACCORDION}-item]`)
 
-    const setHeightContent = (duration = true) => {
+    const setHeightContent = (transition = true) => {
       if (!content) {
         logError(
           isEn
@@ -25,9 +25,9 @@ export default (container: Container = document) => {
         return
       }
 
-      const transitionDuration = duration ? Math.max(content.scrollHeight / 2, 150) : 0
+      const duration = transition ? Math.max(content.scrollHeight / 2, 150) : 0
 
-      content.style.transitionDuration = `${transitionDuration}ms`
+      content.style.transitionDuration = `${duration}ms`
 
       if (accordion.dataset.accordion === ACTIVE_VALUE) {
         content.style.removeProperty('height')
