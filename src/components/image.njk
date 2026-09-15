@@ -9,8 +9,8 @@
 
 {% set source = none %}
 
-{% if src == '/' %}
-{% set source = '/' %}
+{% if src == '#' %}
+{% set source = '#' %}
 {% elif src != '' %}
 {% set source = src ~ '.' ~ format %}
 {% endif %}

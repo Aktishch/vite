@@ -2,10 +2,10 @@
   title: 'My library',
   status: true
 } %}
+
 {% extends 'src/layouts/base.njk' %}
+
 {% block content %}
-{% import 'src/components/title.njk' as title %}
-{% import 'src/components/subtitle.njk' as subtitle %}
 
 {# My library #}
 
@@ -30,7 +30,7 @@
       <article class="card dark:bg-black shadow-md transition-shadow hover:shadow-xl">
         <div class="aspect-4/3 relative bg-grey dark:bg-dark rounded-t-inherit overflow-hidden" data-media data-movement="light">
           {{ loader.render() }}
-          {{ image.render(src = '/', className = 'media rounded-t-inherit', data = 'data-lazy data-src="/img/pictures/test.jpg"') }}
+          {{ image.render(src = '#', className = 'media rounded-t-inherit', data = 'data-lazy data-src="/img/pictures/test.jpg"') }}
         </div>
         <div class="card-content py-6 px-4 md:px-6">
           <h4 class="font-alt font-semibold text-2xl/tight mb-4">
@@ -54,7 +54,7 @@
           <div class="card dark:bg-black shadow-md transition-shadow hover:shadow-xl">
             <div class="aspect-4/2 relative bg-grey dark:bg-dark rounded-t-inherit overflow-hidden" data-media>
               {{ loader.render() }}
-              {{ image.render(src = '/', className = 'media rounded-t-inherit', data = 'data-lazy data-src="/img/pictures/test.jpg"') }}
+              {{ image.render(src = '#', className = 'media rounded-t-inherit', data = 'data-lazy data-src="/img/pictures/test.jpg"') }}
             </div>
             <div class="card-content py-6 px-4 sm:px-6">
               <h4 class="font-alt font-semibold text-2xl">
@@ -84,6 +84,293 @@
   </div>
   <div class="w-full max-w-48" data-anim>
     <button class="btn btn-second btn-fade btn-lg sm:hidden w-full mt-5" data-listing-show data-waved="dark">Show more</button>
+  </div>
+</section>
+
+{# Кнопки #}
+
+<section class="wrapper flex flex-col items-center justify-center bg-white dark:bg-black">
+  {{ subtitle.render(text = 'Buttons', className = 'mb-3', data = 'data-anim data-movement="blend"') }}
+  <h3 class="font-semibold sm:text-lg mb-5 sm:mb-10" data-anim data-movement="blend">
+    Buttons standard
+  </h3>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5 sm:mb-10">
+    <button class="btn btn-primary btn-lg">btn</button>
+    <button class="btn btn-primary btn-contur btn-lg">btn btn-contur</button>
+    <button class="btn btn-primary btn-fade btn-lg">btn btn-fade</button>
+    <button class="btn btn-primary btn-contur btn-fade btn-lg">btn btn-contur btn-fade</button>
+    <button class="btn btn-primary btn-fill btn-lg">btn btn-fill</button>
+    <button class="btn btn-primary btn-fill btn-light btn-lg">btn btn-fill btn-light</button>
+    <button class="btn btn-primary btn-text btn-lg">btn btn-text</button>
+    <button class="btn btn-primary btn-contur btn-swipe btn-lg">btn btn-contur btn-swipe</button>
+  </div>
+  <h3 class="font-semibold sm:text-lg mb-5 sm:mb-10" data-anim data-movement="blend">
+    Buttons size
+  </h3>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5 sm:mb-10">
+    <button class="btn btn-primary btn-fill btn-xxl">btn-xxl</button>
+    <button class="btn btn-primary btn-fill btn-xl">btn-xl</button>
+    <button class="btn btn-primary btn-fill btn-lg">btn-lg</button>
+    <button class="btn btn-primary btn-fill btn-md">btn-md</button>
+    <button class="btn btn-primary btn-fill btn-sm">btn-sm</button>
+  </div>
+  <h3 class="font-semibold sm:text-lg mb-5 sm:mb-10" data-anim data-movement="blend">
+    Buttons waved
+  </h3>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full mb-5 sm:mb-10">
+    <button class="btn btn-primary btn-fill btn-lg" data-waved="light">data-waved="light"</button>
+    <button class="btn btn-primary btn-fill btn-lg" data-waved="dark">data-waved="dark"</button>
+  </div>
+</section>
+
+{# Документы #}
+
+<section class="wrapper xl:wrapper-distance flex flex-col items-center justify-center bg-grey dark:bg-dark">
+  {{ subtitle.render(text = 'Accordion', className = 'mb-3', data = 'data-anim data-movement="blend"') }}
+  <h3 class="font-semibold sm:text-lg mb-5 sm:mb-10" data-anim data-movement="blend">
+    Drop-down list
+  </h3>
+  <div class="flex flex-col gap-5 w-full">
+    {% for i in range(0, 3) %}
+    <div class="group/accordion relative bg-second/10 rounded-2xl overflow-hidden shadow-md py-4 px-4 sm:py-6" data-anim data-accordion="{{ 'active' if loop.first else '' | safe }}" data-close-click>
+      <div class="flex items-center justify-between gap-4">
+        <h4 class="font-alt font-semibold text-xl">
+          Documents -
+          {{ i }}
+        </h4>
+        <button class="btn btn-primary btn-fill rounded-full shrink-0 size-9" data-accordion-toggle data-waved="light">
+          {{ icon.render(id = 'arrow-right', className = 'icon text-sm transition-transform group-data-[accordion=active]/accordion:rotate-90') }}
+        </button>
+      </div>
+      <div data-accordion-content>
+        <div class="flex flex-col gap-3 pt-4">
+          {% for j in range(0, 4) %}
+          <a class="flex items-center gap-4 relative bg-white dark:bg-black rounded-lg underline-offset-4 hover:underline p-3" data-waved="dark" draggable="false" href="">
+            <div class="flex items-center justify-center bg-primary/10 rounded-lg shrink-0 size-12">
+              {{ icon.render(id = 'file', className = 'icon text-primary text-2xl') }}
+            </div>
+            <p class="text-sm sm:text-base">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            </p>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{# Фильтр #}
+
+{% set numbers = [
+  {
+    text: 'text-4xl',
+    value: '36'
+  },
+  {
+    text: 'text-3xl',
+    value: '30'
+  },
+  {
+    text: 'text-2xl',
+    value: '24'
+  },
+  {
+    text: 'text-xl',
+    value: '20'
+  },
+  {
+    text: 'text-lg',
+    value: '18'
+  },
+  {
+    text: 'text-base',
+    value: '16'
+  },
+  {
+    text: 'text-xs',
+    value: '12'
+  }
+] %}
+
+<section class="wrapper relative text-white overflow-hidden min-h-screen" data-parallax>
+  <div class="absolute inset-0 bg-grey dark:bg-dark" data-media>
+    {{ loader.render() }}
+    {{ image.render(src = '#', className = 'media', data = 'data-lazy data-src="/img/pictures/test-gray.jpg"') }}
+  </div>
+  <div class="flex flex-col items-center relative">
+    {{ subtitle.render(text = 'Filter', className = 'mb-3', data = 'data-anim data-movement="blend"') }}
+    <h3 class="font-semibold sm:text-lg mb-5 sm:mb-10" data-anim data-movement="blend">
+      paralax, form and other...
+    </h3>
+    <div class="relative w-full max-w-xl" data-filtering="filtering">
+      {{ image.render(src = '/img/pictures/circle-grey', format = 'svg', className = 'absolute top-20 -left-8 z-10 drop-shadow-md pointer-events-none w-16', data = 'data-parallax-layer data-parallax-speed="4" data-parallax-depth="2"') }}
+      {{ image.render(src = '/img/pictures/circle-white', format = 'svg', className = 'absolute -bottom-8 -right-8 z-10 drop-shadow-md pointer-events-none w-16', data = 'data-parallax-layer="reverse" data-parallax-speed="4" data-parallax-depth="2"') }}
+      {{ image.render(src = '/img/pictures/circle-red', format = 'svg', className = 'absolute bottom-0 -right-7 z-10 drop-shadow-md pointer-events-none w-16', data = 'data-scroll data-scroll-speed="-0.1"') }}
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-0 md:gap-4 relative bg-grey md:bg-transparent text-second md:text-white rounded-2xl md:rounded-none md:border-b md:border-solid md:border-white overflow-hidden md:pb-4 mb-5 md:mb-10" data-anim>
+        {% for item in ['text-style', 'form-validate', 'switches', 'file'] %}
+        <button class="text-xl grow p-4 md:p-0 data-active:bg-second md:data-active:bg-transparent data-active:text-white md:data-active:text-primary data-active:pointer-events-none" data-filtering-category="filtering" data-filtering-value="{{ loop.index0 }}" {{ 'data-active' if loop.first else '' | safe }}>
+          {{ item }}
+        </button>
+        <span class="hidden md:block absolute bottom-0 left-0 bg-primary rounded-t-lg transition-[left,width] ease-linear h-1" data-filtering-line="filtering"></span>
+        {% endfor %}
+      </div>
+      <div class="bg-white text-black rounded-3xl shadow-md p-7 md:p-10">
+        <div data-filtering-card="filtering" data-filtering-value="0">
+          <ul class="flex flex-col gap-4 list-disc list-inside text-primary">
+            {% for item in numbers %}
+            <li>
+              <span class="text-second {{ item.text }}">
+                --text-<span data-number="{{ item.value }}" data-step="1" data-time="2" data-fixed="0"></span>
+              </span>
+            </li>
+            {% endfor %}
+          </ul>
+          <p class="text-primary mt-5">
+            <q class="bg-grey font-semibold text-justify text-lg/loose rounded-2xl shadow-md box-decoration-clone px-3 py-1" data-text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis ex omnis, ut dolorem dolore enim expedita?" data-speed="50"></q>
+          </p>
+        </div>
+        <div data-filtering-card="filtering" data-filtering-value="1">
+          <form class="flex flex-col gap-5 w-full max-w-sm mx-auto" data-form="submit" data-save="save" data-datepicker>
+            <input type="hidden" value="Тема" name="theme">
+            <label data-label>
+              <h5 class="font-medium text-xl mb-2">
+                Name
+              </h5>
+              <div class="relative">
+                <input class="input input-gray input-lg" data-input="text" type="text" placeholder="Name" name="name">
+                {{ error.render() }}
+              </div>
+            </label>
+            <label data-label>
+              <h5 class="font-medium text-xl mb-2">
+                Telephone
+              </h5>
+              <div class="relative">
+                <input class="input input-gray input-lg" data-input="tel" type="tel" placeholder="+7 (___) ___-__-__" name="tel">
+                {{ error.render() }}
+              </div>
+            </label>
+            <label data-label>
+              <h5 class="font-medium text-xl mb-2">
+                Email
+              </h5>
+              <div class="relative">
+                <input class="input input-gray input-lg" data-input="email" type="text" placeholder="_@_._" name="email">
+                {{ error.render() }}
+              </div>
+            </label>
+            <div>
+              <h5 class="font-medium text-xl mb-2">
+                Date
+              </h5>
+              <div class="flex items-center justify-between">
+                <div class="relative grow" data-label>
+                  <input class="input input-gray input-lg rounded-r-none" data-input data-datepicker-min data-position="top left" type="text" readonly name="check-in">
+                  {{ error.render() }}
+                </div>
+                <div class="relative grow" data-label>
+                  <input class="input input-gray input-lg rounded-l-none" data-input data-datepicker-max type="text" readonly name="check-out">
+                  <div class="flex items-center justify-center absolute top-0 bottom-0 right-0 pointer-events-none w-12 h-full">
+                    {{ icon.render(id = 'calendar', className = 'icon text-xl') }}
+                  </div>
+                  {{ error.render() }}
+                </div>
+              </div>
+            </div>
+            <label data-label>
+              <h5 class="font-medium text-xl mb-2">
+                Number
+              </h5>
+              <div class="relative">
+                <input class="input input-gray input-lg" data-input="float" type="text" placeholder="12345" name="number">
+                {{ error.render() }}
+              </div>
+            </label>
+            <label data-label>
+              <h5 class="font-medium text-xl mb-2">
+                Select
+              </h5>
+              <div class="relative">
+                <select class="input input-gray input-lg" data-input="select" name="select">
+                  <option value="empty" disabled hidden selected>Select</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+                <div class="flex items-center justify-center absolute top-0 bottom-0 right-0 pointer-events-none w-12 h-full">
+                  {{ icon.render(id = 'arrow-bottom', className = 'icon text-xs') }}
+                </div>
+                {{ error.render() }}
+              </div>
+            </label>
+            <label data-label>
+              <h5 class="font-medium text-xl mb-2">
+                Reviews
+              </h5>
+              <div class="relative">
+                <textarea class="input input-gray input-lg h-48" data-input="description" placeholder="Reviews" name="text"></textarea>
+                {{ error.render() }}
+              </div>
+            </label>
+            <div class="flex flex-col gap-5" data-filelist data-type="doc" data-size="1">
+              <div class="relative" data-filelist-label data-label>
+                <label class="btn btn-second btn-fade btn-lg" data-waved="dark">
+                  <input hidden data-filelist-input data-input="file" type="file" multiple name="files[]">
+                  <span data-filelist-text></span>
+                </label>
+                {{ error.render() }}
+              </div>
+              <ul class="flex flex-col gap-1 text-xs empty:hidden" data-filelist-listing="5"></ul>
+            </div>
+            <div class="flex">
+              <label class="flex flex-row items-center cursor-pointer">
+                <input class="switch switch-checkbox mr-2" data-form-toggle type="checkbox" checked name="politics">
+                <span class="text-xl">Policy</span>
+              </label>
+            </div>
+            <button class="btn btn-second btn-fill btn-lg" data-waved="dark" type="submit">Submit</button>
+          </form>
+          <div class="flex items-center justify-center mt-5">
+            <a class="text-second text-lg underline-offset-4 hover:underline cursor-pointer w-max" data-fancybox-dialog data-type="ajax" draggable="false" href="/dialogs/politics.html">Privacy policy</a>
+          </div>
+        </div>
+        <div data-filtering-card="filtering" data-filtering-value="2">
+          <div class="flex flex-col gap-6">
+            <h4 class="font-semibold text-2xl">
+              Checkbox:
+            </h4>
+            <div class="flex items-center gap-5">
+              <input class="switch switch-checkbox" type="checkbox">
+              <input class="switch switch-checkbox text-second" type="checkbox">
+              <input class="switch switch-checkbox" type="checkbox" disabled>
+            </div>
+            <h4 class="font-semibold text-2xl">
+              Radio:
+            </h4>
+            <div class="flex items-center gap-5">
+              <input class="switch switch-radio" type="radio" name="radio">
+              <input class="switch switch-radio text-second" type="radio" name="radio">
+              <input class="switch switch-radio" type="radio" name="radio" disabled>
+            </div>
+            <h4 class="font-semibold text-2xl">
+              Toggle:
+            </h4>
+            <input class="switch switch-toggle" type="checkbox">
+            <h4 class="font-semibold text-2xl">
+              Quantity:
+            </h4>
+            <div class="flex items-center justify-between rounded-full border border-solid border-gray w-max p-1" data-quantity>
+              <button class="btn btn-gray btn-fill rounded-full shrink-0 size-8 active:translate-y-0" data-quantity-decrease data-waved="light">-</button>
+              <input class="bg-transparent text-center shrink-0 w-10 h-auto" data-quantity-input data-input="number" type="text" value="0" maxlength="3" name="quantity">
+              <button class="btn btn-gray btn-fill rounded-full shrink-0 size-8 active:translate-y-0" data-quantity-increase data-waved="light">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

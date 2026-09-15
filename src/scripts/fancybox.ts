@@ -1,8 +1,8 @@
 import { Fancybox } from '@fancyapps/ui/dist/fancybox/'
-// import { initCalendar } from '@ts/air-datepicker'
+import { initCalendar } from '@scripts/air-datepicker'
 // import imagePreview from '@ts/image-preview'
 import lazyLoad from '@scripts/lazy-load'
-// import { setStateSubmitBtn } from '@ts/submit-handler'
+import { setStateSubmitBtn } from '@scripts/submit-handler'
 import { getData, getTouchDevice, hostname } from '@utils'
 
 type Callback = ((container: HTMLElement | undefined) => void) | undefined
@@ -29,7 +29,7 @@ const updateLoad = () => {
 }
 
 export const dialog = {
-  open: (src: string, callback: Callback) => {
+  open: (src: string, callback?: Callback) => {
     Fancybox.show(
       [
         {
@@ -52,7 +52,7 @@ export const dialog = {
       }
     )
   },
-  notClosing: (src: string, callback: Callback) => {
+  notClosing: (src: string, callback?: Callback) => {
     Fancybox.show(
       [
         {
@@ -102,19 +102,19 @@ export default () => {
     }
   })
 
-  // Fancybox.bind(`[${DATA_FANCYBOX}-form]`, {
-  //   dragToClose: false,
-  //   on: {
-  //     'Carousel.contentReady': (...[, , slide]) => {
-  //       const container = slide.el
+  Fancybox.bind(`[${DATA_FANCYBOX}-form]`, {
+    dragToClose: false,
+    on: {
+      'Carousel.contentReady': (...[, , slide]) => {
+        const container = slide.el
 
-  //       if (container) {
-  //         updateLoad()
-  //         setStateSubmitBtn(container)
-  //       }
-  //     }
-  //   }
-  // })
+        if (container) {
+          updateLoad()
+          setStateSubmitBtn(container)
+        }
+      }
+    }
+  })
 
   // Fancybox.bind(`[${DATA_FANCYBOX}-avatar]`, {
   //   dragToClose: false,
@@ -130,17 +130,17 @@ export default () => {
   //   }
   // })
 
-  // Fancybox.bind(`[${DATA_FANCYBOX}-calendar]`, {
-  //   dragToClose: false,
-  //   on: {
-  //     'Carousel.contentReady': (...[, , slide]) => {
-  //       const container = slide.el
+  Fancybox.bind(`[${DATA_FANCYBOX}-calendar]`, {
+    dragToClose: false,
+    on: {
+      'Carousel.contentReady': (...[, , slide]) => {
+        const container = slide.el
 
-  //       if (container) {
-  //         updateLoad()
-  //         initCalendar(container)
-  //       }
-  //     }
-  //   }
-  // })
+        if (container) {
+          updateLoad()
+          initCalendar(container)
+        }
+      }
+    }
+  })
 }

@@ -3,6 +3,7 @@ import nunjucks from '@vituum/vite-plugin-nunjucks'
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
+import { format } from 'prettier'
 import { defineConfig, UserConfig } from 'vite'
 import checker from 'vite-plugin-checker'
 import vituum from 'vituum'
@@ -29,7 +30,12 @@ export default defineConfig({
         }
       }
     }),
-    nunjucks(),
+    nunjucks({
+      options: {
+        trimBlocks: true,
+        lstripBlocks: true
+      }
+    }),
     tailwindcss(),
     checker({
       typescript: true,
@@ -41,6 +47,20 @@ export default defineConfig({
         lintCommand: 'stylelint "./src/**/*.css"'
       }
     }),
+    {
+      name: 'vite-prettier-html',
+      transformIndexHtml: {
+        order: 'post',
+        handler: async (html) => {
+          return await format(html, {
+            parser: 'html',
+            htmlWhitespaceSensitivity: 'ignore',
+            printWidth: 99999,
+            wrapAttributes: 'preserve'
+          })
+        }
+      }
+    },
     {
       name: 'vite-clean-js-garbage',
       closeBundle() {

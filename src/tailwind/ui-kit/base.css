@@ -56,7 +56,7 @@
       @apply hidden!;
     }
 
-    &[src='/'] {
+    &[src='#'] {
       @apply invisible;
     }
   }
@@ -71,6 +71,10 @@
 
   label {
     @apply block;
+  }
+
+  button {
+    @apply cursor-pointer;
   }
 
   a,

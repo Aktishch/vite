@@ -77,7 +77,7 @@
     &::before {
       transition:
         opacity 300ms linear,
-        transform 400ms linear;
+        scale 400ms linear;
 
       @apply content-auto rounded-inherit pointer-events-none invisible absolute top-1/2 left-1/2 size-full -translate-1/2 scale-0 bg-current;
     }

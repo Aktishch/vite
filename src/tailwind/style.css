@@ -80,7 +80,7 @@
 }
 
 .snowflake {
-  @apply absolute;
-
   animation: snowflake 3000ms linear both 1;
+
+  @apply absolute;
 }
