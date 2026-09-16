@@ -5,6 +5,11 @@ import './tailwind/style.css'
 
 import accordion from '@scripts/accordion'
 import airDatepicker from '@scripts/air-datepicker'
+import canvasRendering from '@scripts/canvas-rendering'
+import combination from '@scripts/combination'
+import compare from '@scripts/compare'
+import cookie from '@scripts/cookie'
+import copy from '@scripts/copy'
 import currentTab from '@scripts/current-tab'
 import currentYear from '@scripts/current-year'
 import dataSave from '@scripts/data-save'
@@ -12,6 +17,8 @@ import draggable from '@scripts/draggable'
 import fancybox from '@scripts/fancybox'
 import fileList from '@scripts/file-list'
 import filtering from '@scripts/filtering'
+import game from '@scripts/game'
+import imagePreview from '@scripts/image-preview'
 import input from '@scripts/input'
 import lazyLoad from '@scripts/lazy-load'
 import listing from '@scripts/listing'
@@ -24,6 +31,7 @@ import parallax from '@scripts/parallax'
 import phoneMask from '@scripts/phone-mask'
 import preloader from '@scripts/preloader'
 import quantity from '@scripts/quantity'
+import range from '@scripts/range'
 import runningButton from '@scripts/running-button'
 import scrollHeader from '@scripts/scroll-header'
 import scrollTo from '@scripts/scroll-to'
@@ -33,6 +41,8 @@ import snowflakes from '@scripts/snowflakes'
 import social from '@scripts/social'
 import submitHandler from '@scripts/submit-handler'
 import theme from '@scripts/theme'
+import timeCounter from '@scripts/time-counter'
+import warning from '@scripts/warning'
 import waved from '@scripts/waved'
 import writeText from '@scripts/write-text'
 import yandexMap from '@scripts/yandex-map'
@@ -40,6 +50,11 @@ import yandexMap from '@scripts/yandex-map'
 const initApplication = () => {
   accordion()
   airDatepicker()
+  canvasRendering()
+  combination()
+  compare()
+  cookie()
+  copy()
   currentTab()
   currentYear()
   dataSave()
@@ -47,6 +62,8 @@ const initApplication = () => {
   fancybox()
   fileList()
   filtering()
+  game()
+  imagePreview()
   input()
   lazyLoad()
   listing()
@@ -57,6 +74,7 @@ const initApplication = () => {
   parallax()
   phoneMask()
   quantity()
+  range()
   runningButton()
   scrollHeader()
   scrollTo()
@@ -66,6 +84,8 @@ const initApplication = () => {
   social()
   submitHandler()
   theme()
+  timeCounter()
+  warning()
   waved()
   yandexMap()
   preloader().finally(() => {

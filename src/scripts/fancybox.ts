@@ -1,6 +1,6 @@
 import { Fancybox } from '@fancyapps/ui/dist/fancybox/'
 import { initCalendar } from '@scripts/air-datepicker'
-// import imagePreview from '@ts/image-preview'
+import imagePreview from '@scripts/image-preview'
 import lazyLoad from '@scripts/lazy-load'
 import { setStateSubmitBtn } from '@scripts/submit-handler'
 import { getData, getTouchDevice, hostname } from '@utils'
@@ -116,19 +116,19 @@ export default () => {
     }
   })
 
-  // Fancybox.bind(`[${DATA_FANCYBOX}-avatar]`, {
-  //   dragToClose: false,
-  //   on: {
-  //     'Carousel.contentReady': (...[, , slide]) => {
-  //       const container = slide.el
+  Fancybox.bind(`[${DATA_FANCYBOX}-avatar]`, {
+    dragToClose: false,
+    on: {
+      'Carousel.contentReady': (...[, , slide]) => {
+        const container = slide.el
 
-  //       if (container) {
-  //         updateLoad()
-  //         imagePreview(container)
-  //       }
-  //     }
-  //   }
-  // })
+        if (container) {
+          updateLoad()
+          imagePreview(container)
+        }
+      }
+    }
+  })
 
   Fancybox.bind(`[${DATA_FANCYBOX}-calendar]`, {
     dragToClose: false,

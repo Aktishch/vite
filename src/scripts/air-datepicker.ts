@@ -9,7 +9,7 @@ interface CalendarOptions {
 }
 
 const DATA_DATEPICKER = getData('datepicker')
-const EXCLUDE_DATES = [+new Date(2026, 4, 5), +new Date(2026, 4, 7), +new Date(2026, 5, 10)]
+const EXCLUDE_DATES = [+new Date(2026, 8, 5), +new Date(2026, 8, 7), +new Date(2026, 9, 10)]
 
 const getFancybox = (container: Container) => {
   const dialog: HTMLDivElement | null = container.querySelector('.f-html')

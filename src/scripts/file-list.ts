@@ -1,4 +1,4 @@
-import { Container, FileType, getData, getValidate, handleFile, isEn, logError, source, uploadFile } from '@utils'
+import { Container, getData, getValidate, handleFile, isEn, logError, source, uploadFile } from '@utils'
 
 const DATA_FILELIST = getData('filelist')
 const LABEL_DISABLED_CLASSNAMES = ['pointer-events-none', 'opacity-50']
@@ -25,7 +25,8 @@ export default (container: Container = document) => {
       return
     }
 
-    const type = (filelist.dataset.type as FileType | undefined) || 'img'
+    const value = filelist.dataset.type
+    const type = value === 'img' || value === 'doc' ? value : 'img'
     const size = Number(filelist.dataset.size) || 2
     const maxLength = Number(listing.dataset.filelistListing) || 3
     const message = {

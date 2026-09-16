@@ -1,11 +1,9 @@
 import { isEn } from '@utils/is-en'
 
-export type FileType = 'img' | 'doc'
-
 interface HandlerOptions {
   file: File
   error: HTMLSpanElement
-  type: FileType
+  type: 'img' | 'doc'
   size: number
 }
 

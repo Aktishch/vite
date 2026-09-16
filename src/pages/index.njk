@@ -5,6 +5,10 @@
 
 {% extends 'src/layouts/base.njk' %}
 
+{% import 'src/components/title.njk' as title %}
+{% import 'src/components/subtitle.njk' as subtitle %}
+{% import 'src/components/error.njk' as error %}
+
 {% block content %}
 
 {# My library #}
@@ -367,11 +371,157 @@
               <input class="bg-transparent text-center shrink-0 w-10 h-auto" data-quantity-input data-input="number" type="text" value="0" maxlength="3" name="quantity">
               <button class="btn btn-gray btn-fill rounded-full shrink-0 size-8 active:translate-y-0" data-quantity-increase data-waved="light">+</button>
             </div>
+            <h4 class="font-semibold text-2xl">
+              Rating:
+            </h4>
+            <div class="flex flex-row-reverse items-center gap-3 bg-gray/40 rounded-full w-max p-3">
+              {% for i in range(0, 5) | reverse %}
+              <input class="peer/rating" id="rating-{{ i }}" hidden type="radio" value="{{ i }}" name="rating">
+              <label class="peer/star text-second text-2xl opacity-50 cursor-pointer transition-opacity hover:opacity-100 peer-hover/star:opacity-100 peer-checked/rating:opacity-100" for="rating-{{ i }}">
+                {{ icon.render(id = 'star', className = 'icon') }}
+              </label>
+              {% endfor %}
+            </div>
+            <h4 class="font-semibold text-2xl">
+              Range:
+            </h4>
+            <div class="range w-full max-w-xs" data-range="28">
+              <div class="flex items-center justify-between mb-4">
+                <span>Value</span>
+                <output class="opacity-60" data-range-output></output>
+              </div>
+              <div class="relative text-white pointer-events-none">
+                <div class="relative rounded h-2" data-range-wrapper>
+                  <input class="range-input bg-gray" data-range-input type="range" step="1" max="10" value="5">
+                  <div class="range-progress bg-green" data-range-progress></div>
+                  <output class="range-bubble bg-green shadow-green" data-range-bubble></output>
+                </div>
+              </div>
+            </div>
+            <div class="range w-full max-w-xs" data-range>
+              <div class="flex items-center justify-between mb-4">
+                <input class="input input-gray input-lg text-center w-16" data-range-output data-input="number" type="text" maxlength="3">
+                <input class="input input-gray input-lg text-center w-16" data-range-output data-input="number" type="text" maxlength="3">
+              </div>
+              <div class="relative text-white pointer-events-none">
+                <div class="relative rounded h-2 last:-mt-2" data-range-wrapper>
+                  <input class="range-input bg-green" data-range-input type="range" step="1" max="100" value="30">
+                  <div class="range-progress bg-gray" data-range-progress></div>
+                  <output class="range-bubble bg-green shadow-green" data-range-bubble></output>
+                </div>
+                <div class="relative rounded h-2 last:-mt-2" data-range-wrapper>
+                  <input class="range-input bg-green" data-range-input type="range" step="1" max="100" value="70">
+                  <div class="range-progress bg-gray" data-range-progress></div>
+                  <output class="range-bubble bg-green shadow-green" data-range-bubble></output>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-filtering-card="filtering" data-filtering-value="3">
+          <div class="w-full max-w-xs mx-auto" id="copy">
+            <div class="flex items-center gap-3 w-full mb-5">
+              <a class="aspect-square relative bg-primary/40 rounded-full overflow-hidden shrink-0 w-10" data-fancybox-avatar data-type="ajax" draggable="false" href="/dialogs/avatar.html">
+                <div class="flex items-center justify-center absolute inset-0 rounded-inherit">
+                  {{ icon.render(id = 'user', className = 'icon text-white text-sm') }}
+                </div>
+                {{ image.render(src = '', className = 'media rounded-inherit', data = 'data-avatar="avatar"') }}
+              </a>
+              <h4 class="font-bold text-2xl">
+                Name Surname
+              </h4>
+            </div>
+            <form class="mb-5" data-form="submit">
+              <input type="hidden" value="Тема" name="theme">
+              <div data-preview>
+                <div data-label>
+                  <div class="relative mb-5">
+                    <div class="aspect-square relative bg-second rounded-2xl overflow-hidden transition-opacity" data-preview-drag>
+                      {{ image.render(src = '', className = 'media object-scale-down', data = 'data-preview-image="http://localhost:9000/img/pictures/test.jpg"') }}
+                    </div>
+                    <button class="btn btn-gray btn-fill absolute top-3 right-3 rounded-lg size-10" data-preview-remove data-waved="dark" type="button">
+                      {{ icon.render(id = 'trash', className = 'icon text-red text-2xl') }}
+                    </button>
+                    {{ error.render() }}
+                  </div>
+                  <div class="flex flex-wrap items-center justify-between gap-4">
+                    <label class="btn btn-primary btn-fill btn-lg grow" data-preview-label data-waved="light">
+                      <input hidden data-preview-input data-input="file" type="file" name="files[]">
+                      Загрузить
+                    </label>
+                    <button class="btn btn-primary btn-contur btn-lg grow" data-waved="dark" type="submit">Отправить</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="flex flex-col gap-5 w-full">
+              <div class="relative" data-copy="http://localhost:9000/index.html#copy">
+                <button class="btn btn-gray btn-fill btn-lg w-full" data-copy-button data-waved="dark">Copy</button>
+                <span class="absolute top-full left-0 right-0 text-primary text-sm opacity-0 invisible transition-[opacity,visibility]" data-copy-result>Скопировано</span>
+              </div>
+              <a class="btn btn-gray btn-fill btn-lg" data-waved="dark" data-fancybox-calendar data-type="ajax" draggable="false" href="/dialogs/calendar.html">Calendar</a>
+              <div class="relative" data-rendering="SL-QGLZC-KHQDJ2H">
+                <canvas hidden data-rendering-canvas="/img/pictures/certificate.jpg" width="540" height="750"></canvas>
+                <a class="btn btn-gray btn-fill btn-lg" data-rendering-link data-waved="dark" draggable="false" href="" download="certificate">Download canvas</a>
+              </div>
+              <div data-cookie="/" data-expires="7" id="cookie">
+                <button class="btn btn-gray btn-fill btn-lg w-full" data-cookie-button data-waved="dark">Cookie</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</section>
+
+{# Параллакс #}
+
+{% set parallax = [
+  {
+    bg: 'https://i.ibb.co/JpJVJxq/Background.png',
+    img: 'https://i.ibb.co/Dw3q3tZ/cutout.png'
+  },
+  {
+    bg: 'https://i.ibb.co/ZdGBm4K/m-background.png',
+    img: 'https://i.ibb.co/RC70XmC/m-cutout.png'
+  },
+  {
+    bg: 'https://i.ibb.co/MDBcyMW/b-background.png',
+    img: 'https://i.ibb.co/bQNgD6y/b-cutout.png'
+  }
+] %}
+
+<section class="wrapper flex flex-col items-center justify-center bg-white dark:bg-black overflow-hidden" data-parallax>
+  {{ subtitle.render(text = 'Parallax hovered', className = 'mb-8', data = 'data-anim data-movement="blend"') }}
+  <div class="flex flex-col lg:flex-row items-center lg:justify-between gap-5 sm:gap-10">
+    {% for item in parallax %}
+    <div class="w-72" data-parallax-hovered="600">
+      <div class="aspect-2/3 relative bg-grey dark:bg-dark overflow-hidden transition-transform ease-linear" data-parallax-item="10" data-media>
+        {{ loader.render() }}
+        {{ image.render(src = '#', className = 'media', data = 'data-lazy data-src="' ~ item.bg ~ '"') }}
+        <div class="absolute inset-5 border-8 border-solid border-second transition-transform ease-linear" data-parallax-item="100">
+          {{ image.render(src = '#', className = 'media transition-transform ease-linear', data = 'data-parallax-item="80" data-lazy data-src="' ~ item.img ~ '"') }}
+          <div class="absolute top-auto bottom-0 left-0 right-0 text-white transition-transform ease-linear pointer-events-none p-10" data-parallax-item="160">
+            <h2 class="font-medium text-xl/tight mb-3">
+              Hover me!
+            </h2>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{# Игра #}
+
+<section class="wrapper flex flex-col items-center justify-center bg-grey dark:bg-dark">
+  {{ subtitle.render(text = 'Game', className = 'mb-8', data = 'data-anim data-movement="blend"') }}
+  <div class="grid grid-cols-3 border border-solid border-black w-full max-w-md mx-auto" data-game></div>
 </section>
 
 {% endblock %}

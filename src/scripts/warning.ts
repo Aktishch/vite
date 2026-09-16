@@ -1,0 +1,30 @@
+import { dialog, getDialogSrc } from '@scripts/fancybox'
+import { Container, html } from '@utils'
+
+const WARNING_VALUE = 'warning'
+const POSITIVE_VALUE = 'positive'
+
+const checkWarning = (event: Event) => {
+  const button: HTMLButtonElement | null = (event.target as HTMLElement).closest('[data-warning]')
+
+  if (!button) return
+
+  const value = button.dataset.warning
+
+  if (value && value === POSITIVE_VALUE) {
+    sessionStorage.setItem(WARNING_VALUE, value)
+    dialog.close()
+  } else {
+    html.innerHTML = ''
+  }
+}
+
+export default (container: Container = document) => {
+  if (sessionStorage.getItem(WARNING_VALUE) !== POSITIVE_VALUE) {
+    setTimeout(() => {
+      dialog.notClosing(getDialogSrc(WARNING_VALUE))
+    }, 2000)
+
+    container.addEventListener('click', checkWarning)
+  }
+}
