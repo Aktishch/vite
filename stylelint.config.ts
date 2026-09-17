@@ -14,6 +14,7 @@ export default {
     'alpha-value-notation': 'number',
     'color-function-notation': 'legacy',
     'media-feature-range-notation': 'prefix',
+    'selector-class-pattern': null,
     'declaration-empty-line-before': [
       'always',
       {

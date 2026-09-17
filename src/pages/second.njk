@@ -7,6 +7,7 @@
 
 {% import 'src/components/subtitle.njk' as subtitle %}
 {% import 'src/includes/top.njk' as top %}
+{% import 'src/includes/world.njk' as world %}
 
 {% block content %}
 
@@ -106,5 +107,25 @@
     </div>
   </div>
 </section>
+
+{# Время #}
+
+<section class="wrapper flex flex-col items-center justify-center bg-white dark:bg-black">
+  {{ subtitle.render(text = 'Timer', className = 'mb-8', data = 'data-anim data-movement="blend"') }}
+  <div class="flex flex-col items-center justify-center relative bg-primary rounded-full size-72 mx-auto" data-timer>
+    <div class="flex flex-col items-center absolute top-0 left-0 right-0 text-second transition-transform origin-bottom duration-100 ease-linear pointer-events-none w-0.5 h-1/2 mx-auto after:content-auto after:block after:relative after:-top-2 after:bg-current after:rounded-full after:size-4" data-timer-stopwatch></div>
+    <time class="font-semibold text-white text-center text-2xl mb-5" data-timer-units></time>
+    <div class="flex items-center justify-center gap-4">
+      <button class="btn btn-second btn-fade rounded-full shrink-0 size-10" data-timer-turn data-waved="dark">
+        {{ icon.render(id = 'play', className = 'icon text-4xl') }}
+      </button>
+      <button class="btn btn-second btn-text btn-sm" data-timer-reset data-waved="dark">Reset</button>
+    </div>
+  </div>
+</section>
+
+{# Мир #}
+
+{{ world.render() }}
 
 {% endblock %}

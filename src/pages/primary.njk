@@ -1,0 +1,47 @@
+{% set data = {
+  title: 'Primary page',
+  status: false
+} %}
+
+{% extends 'src/layouts/base.njk' %}
+
+{% import 'src/components/subtitle.njk' as subtitle %}
+{% import 'src/includes/top.njk' as top %}
+
+{% block content %}
+
+{# Primary page #}
+
+{{ top.render(text = data.title) }}
+
+{# Галерея #}
+
+<section class="wrapper flex flex-col items-center justify-center bg-white dark:bg-black overflow-hidden" id="content">
+  {{ subtitle.render(text = 'Slider-swiper', className = 'mb-3', data = 'data-anim data-movement="blend"') }}
+  <h3 class="font-semibold sm:text-lg mb-5 sm:mb-10" data-anim data-movement="blend">
+    Class template for slider
+  </h3>
+  <div class="w-full" data-slider="gallery">
+    <div class="relative">
+      <div class="swiper -m-4 p-4" data-slider-swiper="gallery">
+        <div class="swiper-wrapper">
+          {% for i in range(0, 6) %}
+          <a class="swiper-slide aspect-4/3 relative bg-grey dark:bg-dark rounded-2xl overflow-hidden" data-media data-movement="light" data-fancybox="gallery" draggable="false" href="/img/pictures/test.jpg">
+            {{ loader.render() }}
+            {{ image.render(src = '#', className = 'media rounded-inherit', data = 'data-lazy data-src="/img/pictures/test.jpg"') }}
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      <button class="swiper-button-prev btn btn-primary btn-fill hidden md:flex absolute -left-6 rounded-full size-12" data-slider-prev="gallery" data-waved="light">
+        {{ icon.render(id = 'arrow-left') }}
+      </button>
+      <button class="swiper-button-next btn btn-primary btn-fill hidden md:flex absolute -right-6 rounded-full size-12" data-slider-next="gallery" data-waved="light">
+        {{ icon.render(id = 'arrow-right') }}
+      </button>
+      <div class="swiper-pagination md:hidden text-primary mt-10" data-slider-pagination="gallery"></div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
